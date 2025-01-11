@@ -1,0 +1,43 @@
+#!/usb/bin/env perl
+#use v5.26
+
+#not `command -v jq` and die "jq not found";
+
+
+sub lookup_file {
+  my $os = lc(`uname -s`);
+  my $arch = `uname -m`;
+  chomp( $arch, $os );
+  my $files = `curl -sSL "https://go.dev/dl/?mode=json" \\
+    | jq -r '.[0].files[]
+    | select(.os == "$os")
+    | select(.kind == "archive")
+    | select(.arch == "$arch")
+    | .filename'`;
+  chomp($file);
+  return $file;
+}
+
+sub downdir {
+  my $downloads = $ENV{DOWNLOADS} || '/tmp';
+  my $homedown = $ENV{HOME} . "/Downloads";
+  return $downloads;
+}
+
+sub fetch {
+  my $file = lookup_file();
+  not $file and die "no file found";
+  my $downloads = downloads();
+  `curl -sSL "https://go.dev/dl/$file" --output-dir "$downloads"`;
+}
+
+sub install {
+  `mkdir -p ~/.local/bin/`;
+  my $downloads = $downloads();
+  my $dir = $ENV{HOME} . "/.local" "$dir/go";
+  "$dir/go" && `tar -C "$dir" -xzf "$path"`;
+}
+
+sub install_latest_go {
+}
+

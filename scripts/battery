@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+battery=$(apm -l)
+status=$(apm -b)
+
+case $status in
+  0) icon="🔋";;
+
+  1) icon="";;
+
+  2) icon="";;
+
+  3) icon="🔌";;
+
+  *) exit 1;;
+
+esac 
+
+echo "$icon $battery"

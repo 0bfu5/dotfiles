@@ -1,0 +1,18 @@
+#!/bin/sh
+
+if [ -z "$(command -v vim)" -o -z "$(command -v vimtutor)" ]; then
+  echo "Warning, doesn't look like you have full Vim version."
+fi
+
+if [ -z "$(command -v nvim)" ] ; then
+  echo "neovim not found"
+fi
+
+rm -rf "$HOME/.vim/"
+rm -rf "$HOME/.vimrc"
+rm -rf "$HOME/.config/nvim"
+mkdir -p "$HOME/.config/nvim"
+ln -sf "$PWD/init.lua" "$HOME/.config/nvim/init.lua"
+ln -sf "$PWD/.vimrc" "$HOME/.vimrc"
+mkdir "$HOME/.vim/" "$HOME/.vim/autoload"
+ln -sf "$PWD/.vim/autoload/plug.vim" "$HOME/.vim/autoload/plug.vim"

@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+sleep=1
+
+while true; do
+  echo  "%{c}%{F#6d878d}%{T2}λ%{T1}%{F#ffebeb} $(hostname) | $(date "+%H:%M %Y/%m/%d")"
+  sleep $sleep
+  done
