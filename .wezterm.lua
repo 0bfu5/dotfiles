@@ -2,11 +2,10 @@ local wezterm = require("wezterm")
 local config = {}
 
 if wezterm.config_builder then config = wezterm.config_builder() end
-config.color_scheme = 'IBM3270(High Contrast) (Gogh)'
+config.color_scheme = 'Gruvbox Material (Gogh)'
 config.font = wezterm.font_with_fallback({
-  { family = "IBM 3270", scale = 1.66 },
+  { family = "Ubuntu Mono", scale = 1.66 },
   { family = "Font Awesome 6 Free", scale = 1.66 },
-  { family = "Monospace", scale = 1.66 },
 })
 
 config.window_padding = {
