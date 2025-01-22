@@ -1,93 +1,4 @@
-"""""""""""""""""""""
-"     Vim-Plug      "
-"""""""""""""""""""""
-" only run if vim-plug is installed
-if filereadable(expand("~/.vim/autoload/plug.vim"))
-  call plug#begin()
-  Plug 'vim-pandoc/vim-pandoc'
-  Plug 'rwxrob/vim-pandoc-syntax-simple'
-  Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-  Plug 'airblade/vim-gitgutter'
-  Plug 'dense-analysis/ale'
-  Plug 'jalvesaq/nvim-R'
-  Plug 'ap/vim-css-color'
-  Plug 'conradirwin/vim-bracketed-paste'
-  Plug 'habamax/vim-asciidoctor'
-  Plug 'mjakl/vim-asciidoc'
-  Plug 'crusoexia/vim-monokai'
-  Plug 'krischik/vim-ada' 
-  if has('nvim-0.8')
-    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    if exists('$NVIM_SCREENKEY')
-      Plug 'NStefan002/screenkey.nvim'
-    endif
-  endif
-  if has ('nvim')
-    Plug 'xolox/vim-misc'
-    Plug 'xolox/vim-lua-ftplugin'
-  else 
-    Plug 'dahu/vim-asciidoc'
-  endif
-  call plug#end()
-
-  let g:ale_sign_error = 'X'
-  let g:ale_sign_warning = '!'
-  let g:ale_linters = {'go': ['gometalinter', 'gofmt','gobuild']}
-
-  " pandoc
-  let g:pandoc#formatting#mode = 'h' " A'
-  let g:pandoc#formatting#textwidth = 72
-
-  " golang
-  let g:go_fmt_fail_silently = 0
-  let g:go_fmt_command = 'goimports'
-  let g:go_fmt_autosave = 1
-  let g:go_gopls_enabled = 1
-  let g:go_highlight_types = 1
-  let g:go_highlight_fields = 1
-  let g:go_highlight_functions = 1
-  let g:go_highlight_function_calls = 1
-  let g:go_highlight_operators = 1
-  let g:go_highlight_extra_types = 1
-  let g:go_highlight_variable_declarations = 1
-  let g:go_highlight_variable_assignments = 1
-  let g:go_highlight_build_constraints = 1
-  let g:go_highlight_diagnostic_errors = 1
-  let g:go_highlight_diagnostic_warnings = 1
-  "let g:go_auto_type_info = 1 " forces 'Press ENTER' too much
-  let g:go_auto_sameids = 0
-  "    let g:go_metalinter_command='golangci-lint'
-  "    let g:go_metalinter_command='golint'
-  "    let g:go_metalinter_autosave=1
-  set updatetime=100
-  "let g:go_gopls_analyses = { 'composites' : v:false }
-  au FileType go nmap <leader>m ilog.Print("made")<CR><ESC>
-  au FileType go nmap <leader>n iif err != nil {return err}<CR><ESC>
-  
-  " raku
-  let g:raku_unicode_abbrevs = 1
-
-  " colorscheme
-  syntax on
-  set background=dark
-  colorscheme monokai
-  hi Normal ctermbg=NONE guibg=NONE
-  hi LineNr ctermbg=NONE guibg=NONE
-  hi clear SignColumn
-  hi Comment ctermbg=NONE guibg=NONE
-else
-  autocmd vimleavepre *.go !gofmt -w % " backup if fatih fails
-  if has("syntax")
-    syntax on
-    hi Normal ctermbg=NONE guibg=NONE
-    hi LineNr ctermbg=NONE guibg=NONE
-    hi clear SignColumn
-    hi Comment ctermbg=NONE guibg=NONE
-  endif
-endif
-
-" checks for vim-tiny (vi)
+"" checks for vim-tiny (vi)
 if has("eval")
    let skip_defaults_vim = 1
 endif
@@ -187,3 +98,86 @@ fun! JumpToDef()
 endf
 
 set laststatus=2
+
+""""""""""""""""""""
+"     Vim-Plug      "
+"""""""""""""""""""""
+" only run if vim-plug is installed
+if filereadable(expand("~/.vim/autoload/plug.vim"))
+
+  call plug#begin('~/.local/share/vim/plugins')
+  Plug 'rwxrob/vim-pandoc-syntax-simple'
+  Plug 'fatih/vim-go'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'dense-analysis/ale'
+  Plug 'ap/vim-css-color'
+  Plug 'conradirwin/vim-bracketed-paste'
+  Plug 'habamax/vim-asciidoctor'
+  Plug 'mjakl/vim-asciidoc'
+  Plug 'srcery-colors/srcery-vim'
+  Plug 'krischik/vim-ada' 
+  if has('nvim-0.8')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  endif
+  if has ('nvim')
+    Plug 'xolox/vim-misc'
+    Plug 'xolox/vim-lua-ftplugin'
+  else 
+    Plug 'dahu/vim-asciidoc'
+  endif
+  call plug#end()
+
+  let g:ale_sign_error = 'X'
+  let g:ale_sign_warning = '!'
+  let g:ale_linters = {'go': ['gometalinter', 'gofmt','gobuild']}
+
+  " pandoc
+  let g:pandoc#formatting#mode = 'h' " A'
+  let g:pandoc#formatting#textwidth = 72
+
+  " golang
+  let g:go_fmt_fail_silently = 0
+  let g:go_fmt_command = 'goimports'
+  let g:go_fmt_autosave = 1
+  let g:go_gopls_enabled = 1
+  let g:go_highlight_types = 1
+  let g:go_highlight_fields = 1
+  let g:go_highlight_functions = 1
+  let g:go_highlight_function_calls = 1
+  let g:go_highlight_operators = 1
+  let g:go_highlight_extra_types = 1
+  let g:go_highlight_variable_declarations = 1
+  let g:go_highlight_variable_assignments = 1
+  let g:go_highlight_build_constraints = 1
+  let g:go_highlight_diagnostic_errors = 1
+  let g:go_highlight_diagnostic_warnings = 1
+  "let g:go_auto_type_info = 1 " forces 'Press ENTER' too much
+  let g:go_auto_sameids = 0
+  "    let g:go_metalinter_command='golangci-lint'
+  "    let g:go_metalinter_command='golint'
+  "    let g:go_metalinter_autosave=1
+  set updatetime=100
+  "let g:go_gopls_analyses = { 'composites' : v:false }
+  au FileType go nmap <leader>m ilog.Print("made")<CR><ESC>
+  au FileType go nmap <leader>n iif err != nil {return err}<CR><ESC>
+
+  syntax on
+  set background=dark
+  colorscheme srcery
+  hi Normal ctermbg=NONE guibg=NONE
+  hi LineNr ctermbg=NONE guibg=NONE
+  hi clear SignColumn
+  hi Comment ctermbg=NONE guibg=NONE
+else
+  autocmd vimleavepre *.go !gofmt -w % " backup if fatih fails
+  if has("syntax")
+    syntax on
+    hi Normal ctermbg=NONE guibg=NONE
+    hi LineNr ctermbg=NONE guibg=NONE
+    hi clear SignColumn
+    hi Comment ctermbg=NONE guibg=NONE
+  endif
+endif
+
+
