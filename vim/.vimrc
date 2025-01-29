@@ -114,10 +114,12 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'conradirwin/vim-bracketed-paste'
   Plug 'habamax/vim-asciidoctor'
   Plug 'mjakl/vim-asciidoc'
+  Plug 'tomasiser/vim-code-dark'
+  Plug 'xero/sourcerer.vim'
   "Plug 'krischik/vim-ada' 
   if has('nvim-0.8')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"    Plug 'neoclide/coc.nvim', {'branch': 'release'}
   endif
   if has ('nvim')
     Plug 'xolox/vim-misc'
@@ -163,7 +165,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
 
   syntax on
   set background=dark
-  colorscheme retrobox
+  colorscheme codedark
   hi Normal ctermbg=NONE guibg=NONE
   hi LineNr ctermbg=NONE guibg=NONE
   hi clear SignColumn
