@@ -115,7 +115,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'habamax/vim-asciidoctor'
   Plug 'mjakl/vim-asciidoc'
   Plug 'tomasiser/vim-code-dark'
-  Plug 'xero/sourcerer.vim'
   "Plug 'krischik/vim-ada' 
   if has('nvim-0.8')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

@@ -24,7 +24,7 @@ config.keys = {
   },
 }
 
-config.window_background_opacity = 0.95
+config.window_background_opacity = 1.00
 config.enable_wayland = false
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
