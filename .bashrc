@@ -45,7 +45,7 @@ export GOPATH="$HOME/.local/share/go"
 export GOBIN="$HOME/.local/bin"
 export GOPROXY=direct
 export CGO_ENABLED=0
-export PYTHONDONTWRITEBYTECODE=2 # fucking shit-for-brains var name
+export PYTHONDONTWRITEBYTECODE=2
 export LC_COLLATE=C
 export CFLAGS="-Wall -Wextra -Werror -O0 -g -fsanitize=address -fno-omit-frame-pointer -finstrument-functions"
 
@@ -103,8 +103,8 @@ PROMPT_AT=@
 
 __ps1() {
   local P='$' dir="${PWD##*/}" B countme short long double\
-    r='\[\e[31m\]' g='\[\e[32m\]' h='\[\e[36m\]' \
-    u='\[\e[33m\]' p='\[\e[35m\]' w='\[\e[35m\]' \
+    r='\[\e[32m\]' g='\[\e[33m\]' h='\[\e[36m\]' \
+    u='\[\e[32m\]' p='\[\e[32m\]' w='\[\e[31m\]' \
     b='\[\e[36m\]' x='\[\e[0m\]'
 
   [[ $EUID == 0 ]] && P='#' && u=$r && p=$u # root

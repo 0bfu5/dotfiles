@@ -4,8 +4,8 @@ local config = {}
 if wezterm.config_builder then config = wezterm.config_builder() end
 config.color_scheme = 'Dark+'
 config.font = wezterm.font_with_fallback({
-  { family = "Cascadia Code", scale = 1.5 },
-  { family = "Font Awesome 6 Free", scale = 1.5 },
+  { family = "Ubuntu Mono", scale = 1.66 },
+  { family = "Font Awesome 6 Free", scale = 1.66 },
 })
 
 config.window_padding = {
@@ -24,7 +24,7 @@ config.keys = {
   },
 }
 
-config.window_background_opacity = 1.00
+config.window_background_opacity = 0.90
 config.enable_wayland = false
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
