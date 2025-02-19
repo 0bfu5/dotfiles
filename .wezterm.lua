@@ -4,8 +4,8 @@ local config = {}
 if wezterm.config_builder then config = wezterm.config_builder() end
 config.color_scheme = 'Dark+'
 config.font = wezterm.font_with_fallback({
-  { family = "Ubuntu Mono", scale = 1.66 },
-  { family = "Font Awesome 6 Free", scale = 1.66 },
+  { family = "Ubuntu Mono", scale = 1.33 },
+  { family = "Font Awesome 6 Free", scale = 1.33 },
 })
 
 config.window_padding = {
