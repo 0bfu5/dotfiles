@@ -115,6 +115,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'habamax/vim-asciidoctor'
   Plug 'mjakl/vim-asciidoc'
   Plug 'tomasiser/vim-code-dark'
+  Plug 'eldritch-theme/eldritch.nvim'
   "Plug 'krischik/vim-ada' 
   if has('nvim-0.8')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -164,7 +165,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
 
   syntax on
   set background=dark
-  colorscheme codedark
+  colorscheme eldritch
   hi Normal ctermbg=NONE guibg=NONE
   hi LineNr ctermbg=NONE guibg=NONE
   hi clear SignColumn
