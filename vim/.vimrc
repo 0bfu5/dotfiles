@@ -114,12 +114,12 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'conradirwin/vim-bracketed-paste'
   Plug 'habamax/vim-asciidoctor'
   Plug 'mjakl/vim-asciidoc'
-  Plug 'tomasiser/vim-code-dark'
-  Plug 'eldritch-theme/eldritch.nvim'
-  "Plug 'krischik/vim-ada' 
+  Plug 'krischik/vim-ada' 
+  Plug 'sainnhe/gruvbox-material'
+  Plug 'talha-akram/noctis.nvim'
   if has('nvim-0.8')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-"    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    "Plug 'neoclide/coc.nvim', {'branch': 'release'}
   endif
   if has ('nvim')
     Plug 'xolox/vim-misc'
@@ -162,10 +162,17 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   "let g:go_gopls_analyses = { 'composites' : v:false }
   au FileType go nmap <leader>m ilog.Print("made")<CR><ESC>
   au FileType go nmap <leader>n iif err != nil {return err}<CR><ESC>
-
   syntax on
   set background=dark
-  colorscheme eldritch
+
+  if !exists('g:colors_name') || g:colors_name !=# 'noctis'
+    try
+      colorscheme noctis_bordo
+    catch /^Vim\%((\a\+)\)\=:E185/
+      colorscheme desert
+    endtry
+  endif
+
   hi Normal ctermbg=NONE guibg=NONE
   hi LineNr ctermbg=NONE guibg=NONE
   hi clear SignColumn

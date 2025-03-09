@@ -103,8 +103,8 @@ PROMPT_AT=@
 
 __ps1() {
   local P='$' dir="${PWD##*/}" B countme short long double\
-    r='\[\e[32m\]' g='\[\e[33m\]' h='\[\e[36m\]' \
-    u='\[\e[32m\]' p='\[\e[32m\]' w='\[\e[31m\]' \
+    r='\[\e[35m\]' g='\[\e[33m\]' h='\[\e[36m\]' \
+    u='\[\e[35m\]' p='\[\e[35m\]' w='\[\e[31m\]' \
     b='\[\e[36m\]' x='\[\e[0m\]'
 
   [[ $EUID == 0 ]] && P='#' && u=$r && p=$u # root
@@ -158,6 +158,7 @@ alias coin="clip '(yes|no)'"
 _have btop && alias top=btop
 alias iam=live
 alias fetch=fastfetch
+alias neofetch=fastfetch
 alias suod=sudo
 alias sduo=sudo
 alias glance=glances
@@ -167,6 +168,8 @@ alias evi='vi $HOME/.vimrc'
 alias ewez='vi $HOME/.wezterm.lua'
 alias ebash='vi $HOME/.bashrc'
 alias c='clear'
+
+_have lynx && alias lynx='lynx -cfg=~/.config/lynx/lynx.cfg'
 _have podman && alias docker=podman
 
 _have vim && alias vi=vim && EDITOR=vim
