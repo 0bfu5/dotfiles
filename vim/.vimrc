@@ -114,9 +114,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'conradirwin/vim-bracketed-paste'
   Plug 'habamax/vim-asciidoctor'
   Plug 'mjakl/vim-asciidoc'
-  Plug 'krischik/vim-ada' 
-  Plug 'sainnhe/gruvbox-material'
-  Plug 'talha-akram/noctis.nvim'
   if has('nvim-0.8')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     "Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -165,9 +162,9 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   syntax on
   set background=dark
 
-  if !exists('g:colors_name') || g:colors_name !=# 'noctis'
+  if !exists('g:colors_name') || g:colors_name !=# 'jcs'
     try
-      colorscheme noctis_bordo
+      colorscheme jcs
     catch /^Vim\%((\a\+)\)\=:E185/
       colorscheme desert
     endtry

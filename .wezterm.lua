@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local config = {}
 
 if wezterm.config_builder then config = wezterm.config_builder() end
---config.color_scheme = 'nightfox'
+config.color_scheme = "Solarized Light (Gogh)"
 config.font = wezterm.font_with_fallback({
   { family = "0xProto Nerd Font", scale = 1.50 },
   { family = "Font Awesome 6 Free", scale = 1.33 },
@@ -10,17 +10,17 @@ config.font = wezterm.font_with_fallback({
 
 -- coolnight colorscheme by josean martinez
 -- github.com/josean-dev/dev-environment-files
-config.colors = {
-	foreground = "#CBE0F0",
-	background = "#011423",
-	cursor_bg = "#47FF9C",
-	cursor_border = "#47FF9C",
-	cursor_fg = "#011423",
-	selection_bg = "#033259",
-	selection_fg = "#CBE0F0",
-	ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
-	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
-}
+--config.colors = {
+--	foreground = "#CBE0F0",
+--	background = "#011423",
+--	cursor_bg = "#47FF9C",
+--	cursor_border = "#47FF9C",
+--	cursor_fg = "#011423",
+--	selection_bg = "#033259",
+--	selection_fg = "#CBE0F0",
+--	ansi = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#0FC5ED", "#a277ff", "#24EAF7", "#24EAF7" },
+--	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
+--}
 
 config.window_padding = {
   left = 20,
@@ -39,7 +39,7 @@ config.keys = {
 }
 
 config.window_background_opacity = 1.0
-config.enable_wayland = true
+config.enable_wayland = false
 config.window_decorations = "RESIZE | TITLE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 3000
