@@ -22,6 +22,20 @@ config.font = wezterm.font_with_fallback({
 --	brights = { "#214969", "#E52E2E", "#44FFB1", "#FFE073", "#A277FF", "#a277ff", "#24EAF7", "#24EAF7" },
 --}
 
+-- based on acme colors from plan0
+-- 
+config.colors = {
+	foreground = "#424242",
+	background = "#ffffec",
+	cursor_bg = "#424242",
+	cursor_border = "#424242",
+	cursor_fg = "#ffffec",
+	selection_bg = "#ffffec",
+	selection_fg = "#424242",
+	ansi = { "#424242", "#b8261e", "#3e8620", "#7f8f29", "#2a8dc5", "#8888c7", "#6aa7a8", "#999957" },
+	brights = { "#b6b79c", "#f2acaa", "#98ce8f", "#ceeea7", "#a6dcf8", "#d0d1f7", "#b0eced", "#ffffec" },
+}
+
 config.window_padding = {
   left = 20,
   right = 0,

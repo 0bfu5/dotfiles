@@ -114,6 +114,7 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   Plug 'conradirwin/vim-bracketed-paste'
   Plug 'habamax/vim-asciidoctor'
   Plug 'mjakl/vim-asciidoc'
+  Plug 'overvale/vacme'
   if has('nvim-0.8')
     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
     "Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -160,11 +161,11 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   au FileType go nmap <leader>m ilog.Print("made")<CR><ESC>
   au FileType go nmap <leader>n iif err != nil {return err}<CR><ESC>
   syntax on
-  set background=dark
+  set background=light
 
   if !exists('g:colors_name') || g:colors_name !=# 'jcs'
     try
-      colorscheme jcs
+      colorscheme vacme
     catch /^Vim\%((\a\+)\)\=:E185/
       colorscheme desert
     endtry
