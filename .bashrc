@@ -14,7 +14,7 @@ _source_if() { [[ -r "$1" ]] && source "$1"; }
 
 # better compatibility and portability
 # env vars
-export PATH=$PATH:/sbin/:/usr/sbin:~/go/bin/:~/.local/bin/:/opt/nvim-linux64/bin:/usr/local/go/bin:~/Scripts
+export PATH=$PATH:/sbin/:/usr/sbin:~/go/bin/:~/.local/bin/:/opt/nvim-linux64/bin:/usr/local/go/bin:~/Scripts:/usr/local/plan9
 export EDITOR=vim
 export GITUSER="$USER"
 export REPOS="$HOME/Repos"
@@ -103,8 +103,8 @@ PROMPT_AT=@
 
 __ps1() {
   local P='$' dir="${PWD##*/}" B countme short long double\
-    r='\[\e[35m\]' g='\[\e[33m\]' h='\[\e[36m\]' \
-    u='\[\e[35m\]' p='\[\e[35m\]' w='\[\e[31m\]' \
+    r='\[\e[31m\]' g='\[\e[35m\]' h='\[\e[36m\]' \
+    u='\[\e[31m\]' p='\[\e[31m\]' w='\[\e[31m\]' \
     b='\[\e[36m\]' x='\[\e[0m\]'
 
   [[ $EUID == 0 ]] && P='#' && u=$r && p=$u # root

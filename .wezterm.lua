@@ -2,10 +2,10 @@ local wezterm = require("wezterm")
 local config = {}
 
 if wezterm.config_builder then config = wezterm.config_builder() end
-config.color_scheme = "3024 (base16)"
+config.color_scheme = "darkmoss (base16)"
 config.font = wezterm.font_with_fallback({
-  { family = "0xProto Nerd Font", scale = 1.50 },
-  { family = "Font Awesome 6 Free", scale = 1.33 },
+  { family = "3270 Nerd Font Mono", scale = 1.75 },
+  { family = "Font Awesome 6 Free", scale = 1.75 },
 })
 
 config.window_padding = {
