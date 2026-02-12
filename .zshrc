@@ -50,8 +50,8 @@ zle -N zle-keymap-select
 echo -ne '\e[5 q'
 
 precmd() { vcs_info }
-PROMPT='%F{yellow}%n@%F{magenta}%m%f ${VI_MODE} %F{magenta}%~%f%F{red}${vcs_info_msg_0_}$f 
-%F{green}%# %f%F{gray}'
+PROMPT='%F{yellow}%n@%F{cyan}%m%f ${VI_MODE} %F{magenta}%~%f%F{cyan}${vcs_info_msg_0_}$f
+%F{green}%# %f%F{cyan}'
 
 export PATH=$PATH:/sbin/:/usr/sbin:~/go/bin/:~/.local/bin/:/usr/local/go/bin/:~/Scripts:~/.cargo/bin/
 #export GITUSER
@@ -94,6 +94,10 @@ elif [ -f /etc/zsh_completion.d/git-prompt ]; then
 fi
 
 unalias -a
+if (( ${+commands[nvim]} )); then
+    alias vi='nvim'
+fi
+
 alias l="ls"
 alias la="ls -al"
 alias '?'=duck
@@ -111,3 +115,6 @@ alias grep='pcregrep'
 
 . "$HOME/.local/bin/env"
 . "$HOME/.cargo/env"
+
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+machine_report
