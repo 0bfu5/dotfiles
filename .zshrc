@@ -118,3 +118,12 @@ alias grep='pcregrep'
 
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 machine_report
+
+
+# BEGIN opam configuration
+# This is useful if you're using opam as it adds:
+#   - the correct directories to the PATH
+#   - auto-completion for the opam binary
+# This section can be safely removed at any time if needed.
+[[ ! -r '/home/cwiggins123/.opam/opam-init/init.zsh' ]] || source '/home/cwiggins123/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
+# END opam configuration
