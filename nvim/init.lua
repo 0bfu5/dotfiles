@@ -30,6 +30,10 @@ vim.g.netrw_liststyle = 3
 vim.g.netrw_browse_split = 0
 vim.g.netrw_winsize = 20
 
+vim.g.filetype_haredoc = 1
+vim.g.hare_recommended_style = 1
+vim.g.haredoc_search_depth = 2
+
 vim.g.mapleader = " "
 vim.keymap.set('n', '<leader>o', ':update<CR> :source<CR>')
 vim.keymap.set('n', '<leader>w', ':write<CR>')
@@ -55,18 +59,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	end,
 })
 
--- colorscheme and some ui tweaks
-vim.cmd(":set background=light")
-vim.cmd("colorscheme usgc-highk")
-vim.cmd(":hi statusline guibg='#00ff00'guifg='#000000'")
-vim.cmd(":hi Normal guibg=NONE ctermbg=NONE")
-vim.cmd(":hi tabline guibg=NONE")
-vim.cmd(":set colorcolumn=101")
-vim.cmd(":hi LineNr ctermbg=NONE guibg=NONE guifg='#ff0000'")
-vim.o.cursorline = true
-vim.api.nvim_set_hl(0, 'CursorLine', { bg = 'NONE' })
-vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#000000', bg='#00ff00'})
-
 -- #######################
 -- ## PLUGIN MANAGEMENT ##
 -- ##    built-in is    ##
@@ -74,25 +66,40 @@ vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#000000', bg='#00ff00'})
 -- #######################
 
 vim.pack.add({
+	-- related to lsp or treesitter
 	{src = 'https://github.com/nvim-treesitter/nvim-treesitter'},
 	{src = 'https://github.com/neovim/nvim-lspconfig'},
 	{src = 'https://github.com/mason-org/mason.nvim'},
 	{src = 'https://github.com/mason-org/mason-lspconfig.nvim'},
-	{src = 'https://github.com/nvim-mini/mini.pairs'},
 	{src = 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim'},
+
+    -- stuff not related to lsp or treesitter
+	{src = 'https://github.com/nvim-mini/mini.pairs'},
+	{src = 'https://github.com/phha/zenburn.nvim'},
+
 })
+
+-- colorscheme and some ui tweaks
+vim.cmd(":set colorcolumn=101")
+vim.cmd(":set background=dark")
+vim.cmd.colorscheme("zenburn")
+vim.api.nvim_set_hl(0, 'LineNr', { bg = 'NONE'})
+vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#7f9f7f', bg = 'NONE'})
+vim.o.cursorline = true
 
 require('mini.pairs').setup()
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('mason-tool-installer').setup({
+
 	ensure_installed = {
 		"lua_ls",
 		"stylua",
 		"rust-analyzer",
 		"gopls",
 		"pyright",
-		"clangd"
+		"clangd",
+		"ada-language-server"
 	}
 })
 
@@ -141,7 +148,7 @@ vim.api.nvim_create_autocmd('FileType', {
 local treesitter_ok, treesitter = pcall(require, 'nvim-treesitter.configs')
 if treesitter_ok then
 	treesitter.setup({
-		ensure_installed = { 'c', 'cpp', 'go', 'python', 'lua', 'rust' },
+		ensure_installed = { 'c', 'cpp', 'go', 'python', 'lua', 'rust', 'ada', 'hare' },
 		auto_install = true,
 		highlight = {
 			enable = true,
@@ -176,6 +183,9 @@ vim.lsp.config.gopls = {
 		gopls = {
 			analyses = { unusedparams = true },
 			staticcheck = true,
+			telemetry = {
+				mode = "off",
+			},
 		},
 	},
 	on_attach = on_attach,
