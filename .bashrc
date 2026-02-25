@@ -14,8 +14,7 @@ _source_if() { [[ -r "$1" ]] && source "$1"; }
 
 # better compatibility and portability
 # env vars
-export PLAN9=/home/cwiggins123/plan9port
-export PATH=$PATH:/sbin/:/usr/sbin:~/go/bin/:~/.local/bin/:/usr/local/go/bin:~/Scripts:~/.cargo/bin/:~/.rakubrew/bin/:$PLAN9/bin:~/.raku/bin
+export PATH=$PATH:/sbin/:/usr/sbin:~/go/bin/:~/.local/bin/:/usr/local/go/bin:~/Scripts:~/.cargo/bin/
 export EDITOR=vim
 export GITUSER="$USER"
 export REPOS="$HOME/Repos"
@@ -171,7 +170,7 @@ llenv() {
   fi 
 }
 
-#PROMPT_COMMAND="llenv; __ps1"
+PROMPT_COMMAND="llenv; __ps1"
 
 # aliases
 unalias -a
@@ -210,6 +209,8 @@ alias ewez='vi $HOME/.wezterm.lua'
 alias ebash='vi $HOME/.bashrc'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/.git/ --work-tree=$HOME'
 
+set -o vi
+
 _have doas && alias sudo=doas
 
 _have lynx && alias lynx='lynx -cfg=~/.config/lynx/lynx.cfg'
@@ -220,17 +221,6 @@ _have weechat && alias irc='weechat'
 _have vim && alias vi=vim && EDITOR=vim
 _have gcal && alias cal=gcal
 
-#set -o vi
-
-PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
-
-. "$HOME/.local/bin/env"
+#. "$HOME/.local/bin/env"
 . "$HOME/.cargo/env"
 export PATH=/home/cwiggins123/.nimble/bin:$PATH
-
-eval "$(starship init bash)"
-export PATH="/home/cwiggins123/.pixi/bin:$PATH"

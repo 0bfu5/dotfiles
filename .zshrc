@@ -113,10 +113,10 @@ alias temp='cd $(mktemp -d)'
 alias view='vi -R'
 alias grep='pcregrep'
 
-. "$HOME/.local/bin/env"
+#. "$HOME/.local/bin/env"
 . "$HOME/.cargo/env"
 
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+#source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 machine_report
 
 
@@ -127,3 +127,4 @@ machine_report
 # This section can be safely removed at any time if needed.
 [[ ! -r '/home/cwiggins123/.opam/opam-init/init.zsh' ]] || source '/home/cwiggins123/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

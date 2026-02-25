@@ -75,14 +75,12 @@ vim.pack.add({
 
     -- stuff not related to lsp or treesitter
 	{src = 'https://github.com/nvim-mini/mini.pairs'},
-	{src = 'https://github.com/phha/zenburn.nvim'},
-
 })
 
 -- colorscheme and some ui tweaks
 vim.cmd(":set colorcolumn=101")
 vim.cmd(":set background=dark")
-vim.cmd.colorscheme("zenburn")
+vim.cmd.colorscheme("retrobox")
 vim.api.nvim_set_hl(0, 'LineNr', { bg = 'NONE'})
 vim.api.nvim_set_hl(0, 'StatusLine', { fg = '#7f9f7f', bg = 'NONE'})
 vim.o.cursorline = true

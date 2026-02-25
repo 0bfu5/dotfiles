@@ -4,13 +4,13 @@ set -e
 ln -sf "$PWD/.bashrc"      "$HOME/.bashrc"
 ln -sf "$PWD/.zshrc"       "$HOME/.zshrc"
 ln -sf "$PWD/.dir_colors"  "$HOME/.dir_colors"
-ln -sf "$PWD/.wezterm.lua" "$HOME/.wezterm.lua"
+#ln -sf "$PWD/.wezterm.lua" "$HOME/.wezterm.lua"
 ln -sf "$PWD/.inputrc"     "$HOME/.inputrc"
 ln -sf "$PWD/.profile"     "$HOME/.profile"
 ln -sf "$PWD/.profile"     "$HOME/.bash_profile"
 ln -sf "$PWD/scripts"      "$HOME/Scripts"
 
-for i in nvim lynx gh tmux weechat; do
+for i in nvim lynx tmux ; do
 	cd $i && ./setup
 	cd -
 done
