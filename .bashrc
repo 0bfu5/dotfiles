@@ -47,8 +47,7 @@ export GOPROXY=direct
 export CGO_ENABLED=0
 export PYTHONDONTWRITEBYTECODE=2
 export LC_COLLATE=C
-export CFLAGS="-Wall -Wextra -Werror -O2 -g -fsanitize=address -fno-omit-frame-pointer -finstrument-functions"
-
+export CFLAGS="-Wall -Wextra -Werror -O2 -g -finstrument-functions"
 export LESS_TERMCAP_mb="[35m" # magenta
 export LESS_TERMCAP_md="[33m" # yellow
 export LESS_TERMCAP_me="" # "0m"
@@ -224,3 +223,5 @@ _have gcal && alias cal=gcal
 #. "$HOME/.local/bin/env"
 . "$HOME/.cargo/env"
 export PATH=/home/cwiggins123/.nimble/bin:$PATH
+. "/home/cwiggins/.local/share/bob/env/env.sh"
+. "/home/cwiggins/.local/share/bob/env/env.sh"

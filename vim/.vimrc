@@ -116,8 +116,6 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin('~/.local/share/vim/plugins')
   Plug 'conradirwin/vim-bracketed-paste'
   Plug 'jiangmiao/auto-pairs'
-  Plug 'kaarmu/typst.vim'
-  Plug 'jnurmine/zenburn'
   call plug#end()
 
   set updatetime=100
@@ -133,12 +131,20 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   if has("syntax")
     syntax on
     set background=dark
-	colorscheme zenburn
+	colorscheme retrobox
     hi Normal ctermbg=NONE guibg=NONE
     hi clear SignColumn
     hi Comment ctermbg=NONE guibg=NONE
     hi LineNr cterm=NONE ctermbg=NONE ctermfg=6 gui=NONE guibg=NONE guifg=#606360
   endif
 else
-  colorscheme retrobox
+  if has("syntax")
+    syntax on
+    set background=dark
+	colorscheme retrobox
+    hi Normal ctermbg=NONE guibg=NONE
+    hi clear SignColumn
+    hi Comment ctermbg=NONE guibg=NONE
+    hi LineNr cterm=NONE ctermbg=NONE ctermfg=6 gui=NONE guibg=NONE guifg=#606360
+  endif
 endif

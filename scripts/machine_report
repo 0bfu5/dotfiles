@@ -299,7 +299,7 @@ else
 fi
 
 # Last login and Uptime
-last_login=$(lastlog -u "$USER")
+last_login=$(lastlog2 -u "$USER")
 last_login_ip=$(echo "$last_login" | awk 'NR==2 {print $3}')
 
 # Check if last_login_ip is an IP address

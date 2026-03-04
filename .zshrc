@@ -35,11 +35,11 @@ function zle-keymap-select zle-line-init {
 	case ${KEYMAP} in
 		vicmd)
 			echo -ne '\e[1 q'
-			VI_MODE='%F{yellow}[N]%f'
+			VI_MODE='%F{grey}[N]%f'
 			;;
 		viins|main)
 			echo -ne '\e[5 q'
-			VI_MODE='%F{green}[I]%f'
+			VI_MODE='%F{magenta}[I]%f'
 			;;
 		esac
 		zle reset-prompt
@@ -50,8 +50,8 @@ zle -N zle-keymap-select
 echo -ne '\e[5 q'
 
 precmd() { vcs_info }
-PROMPT='%F{yellow}%n@%F{cyan}%m%f ${VI_MODE} %F{magenta}%~%f%F{cyan}${vcs_info_msg_0_}$f
-%F{green}%# %f%F{cyan}'
+PROMPT='%F{green}%n@%F{cyan}%m%f ${VI_MODE} %F{magenta}%~%f%F{cyan}${vcs_info_msg_0_}$f
+%F{yellow}%# %f%F{cyan}'
 
 export PATH=$PATH:/sbin/:/usr/sbin:~/go/bin/:~/.local/bin/:/usr/local/go/bin/:~/Scripts:~/.cargo/bin/
 #export GITUSER
@@ -75,7 +75,7 @@ export GOPROXY=direct
 export CGO_ENABLED=0
 export PYTHONDONTWRITEBYTECODE=2
 export LC_COLLATE=C
-export CFLAGS="-Wall -Wextra -Werror -O2 -g -fsanitize=address -fno-omit-frame-point -finstrument-functions"
+export CFLAGS="-Wall -Wextra -Werror -O2 -g -finstrument-functions"
 
 if (( ${+commands[dircolors]} )); then
 	if [[ -r "$HOME/.dir_colors" ]]; then
@@ -94,10 +94,8 @@ elif [ -f /etc/zsh_completion.d/git-prompt ]; then
 fi
 
 unalias -a
-if (( ${+commands[nvim]} )); then
-    alias vi='nvim'
-fi
 
+alias vi='nvim'
 alias l="ls"
 alias la="ls -al"
 alias '?'=duck
@@ -111,14 +109,14 @@ alias df='df -h'
 alias diff='diff --color'
 alias temp='cd $(mktemp -d)'
 alias view='vi -R'
-alias grep='pcregrep'
+#alias grep='pcregrep'
 
 #. "$HOME/.local/bin/env"
 . "$HOME/.cargo/env"
 
 #source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 machine_report
-
+source "/home/cwiggins/.local/share/bob/env/env.sh"
 
 # BEGIN opam configuration
 # This is useful if you're using opam as it adds:
@@ -128,3 +126,11 @@ machine_report
 [[ ! -r '/home/cwiggins123/.opam/opam-init/init.zsh' ]] || source '/home/cwiggins123/.opam/opam-init/init.zsh' > /dev/null 2> /dev/null
 # END opam configuration
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+export PATH=/home/cwiggins/.nimble/bin:/home/cwiggins/.local/share/bob/nvim-bin:/home/cwiggins/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Users/c00293661/AppData/Local/opam/5.4.0/bin:/mnt/c/Users/c00293661/AppData/Local/opam/.cygwin/root/usr/x86_64-w64-mingw32/sys-root/mingw/bin:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Users/c00293661/.cargo/bin:/sbin/:/usr/sbin:/home/cwiggins/go/bin/:/home/cwiggins/.local/bin/:/usr/local/go/bin/:/home/cwiggins/Scripts:/home/cwiggins/.cargo/bin/:/sbin/:/usr/sbin:/home/cwiggins/go/bin/:/home/cwiggins/.local/bin/:/usr/local/go/bin/:/home/cwiggins/Scripts:/home/cwiggins/.cargo/bin/:/home/cwiggins/Scripts
+
+# bun completions
+[ -s "/home/cwiggins/.bun/_bun" ] && source "/home/cwiggins/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

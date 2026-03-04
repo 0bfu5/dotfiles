@@ -11,4 +11,6 @@ test -r /home/cwiggins/.opam/opam-init/init.sh && . /home/cwiggins/.opam/opam-in
 . "$HOME/.cargo/env"
 
 # Added by swiftly
-. "/home/cwiggins123/.local/share/swiftly/env.sh"
+. "/home/cwiggins123/.local/share/swiftly/env.sh". "/home/cwiggins/.local/share/bob/env/env.sh"
+. "/home/cwiggins/.local/share/bob/env/env.sh"
+. "/home/cwiggins/.local/share/bob/env/env.sh"
