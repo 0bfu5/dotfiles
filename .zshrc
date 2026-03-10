@@ -1,3 +1,5 @@
+# Add deno completions to search path
+if [[ ":$FPATH:" != *":/home/cwiggins/.zsh/completions:"* ]]; then export FPATH="/home/cwiggins/.zsh/completions:$FPATH"; fi
 case $- in
 	*i*) ;;
 	*) return;;
@@ -39,7 +41,7 @@ function zle-keymap-select zle-line-init {
 			;;
 		viins|main)
 			echo -ne '\e[5 q'
-			VI_MODE='%F{magenta}[I]%f'
+			VI_MODE='%F{green}[I]%f'
 			;;
 		esac
 		zle reset-prompt
@@ -50,7 +52,7 @@ zle -N zle-keymap-select
 echo -ne '\e[5 q'
 
 precmd() { vcs_info }
-PROMPT='%F{green}%n@%F{cyan}%m%f ${VI_MODE} %F{magenta}%~%f%F{cyan}${vcs_info_msg_0_}$f
+PROMPT='%F{yellow}%n@%F{magenta}%m%f ${VI_MODE} %F{magenta}%~%f%F{cyan}${vcs_info_msg_0_}$f
 %F{yellow}%# %f%F{cyan}'
 
 export PATH=$PATH:/sbin/:/usr/sbin:~/go/bin/:~/.local/bin/:/usr/local/go/bin/:~/Scripts:~/.cargo/bin/
@@ -134,3 +136,4 @@ export PATH=/home/cwiggins/.nimble/bin:/home/cwiggins/.local/share/bob/nvim-bin:
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+. "/home/cwiggins/.deno/env"

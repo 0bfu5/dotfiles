@@ -14,3 +14,5 @@ test -r /home/cwiggins/.opam/opam-init/init.sh && . /home/cwiggins/.opam/opam-in
 . "/home/cwiggins123/.local/share/swiftly/env.sh". "/home/cwiggins/.local/share/bob/env/env.sh"
 . "/home/cwiggins/.local/share/bob/env/env.sh"
 . "/home/cwiggins/.local/share/bob/env/env.sh"
+. "/home/cwiggins/.deno/env"
+source /home/cwiggins/.local/share/bash-completion/completions/deno.bash

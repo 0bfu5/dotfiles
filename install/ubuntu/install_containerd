@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -e
+
+OS=$(uname -s)
+ARCH=$(uname -m)
+[[ "$ARCH" == x86_64 ]] && ARCH=amd64
+
+_install_containerd() {
+	latest_url="https://github.com/repos/containerd/containerd/releases/latest"
+	version=$(curl -sSL "$latest_url" | jq -r .tag_name)
+	tmpdir=$(mktemp -d)
+	tar_url="https://github.com/containerd/containerd/releases/download/$version/containerd-${version#v}-${OS,,}-{$ARCH}.tar.gz"
+	curl -sSL "$tar_url" -o "$tmpdir/some.tar.gz"
+	sudo tar Cxzvf /usr/local "$tmpdir/some.tar.gz"
+	rm -rf "$tmpdir"
+	}
+
+_install_containerd_service() {
+	echo would install service
+	sudo curl -sSL "https://raw.githubusercontent.com/containerd/main/containerd.service" -o /usr/lib/systemd/containerd.service
+	sudo systemctl daemon-reload
+	sudo systemctl enable --now containerd
+	sudo systemctl status containerd --no-pager
+	}
+
+_install_containerd_set_systemdcgroup() {
+	sudo mkdir /etc/containerd 2>/dev/null || true
+	sudo bash -c "containerd config default > /etc/containerd/config.toml" 
+	python3 <<'EOM'
+import toml
+import os
+
+with open("/etc/containerd/config.toml", "r") as t:
+		conf = toml.load(t)
+
+conf['plugins']['io.containerd.grpc.v1.cri']['containerd']['runtimes']['runc']['options']['SystemdCgroup'] = True
+
+with open(f'/tmp/containerd-config.toml', 'w') as f:
+	toml.dump(conf, f)
+EOM
+
+	sudo mv /tmp/containerd-config.toml /etc/containerd/config.toml
+	sudo systemctl restart containerd
+
+}

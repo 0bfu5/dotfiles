@@ -225,3 +225,5 @@ _have gcal && alias cal=gcal
 export PATH=/home/cwiggins123/.nimble/bin:$PATH
 . "/home/cwiggins/.local/share/bob/env/env.sh"
 . "/home/cwiggins/.local/share/bob/env/env.sh"
+. "/home/cwiggins/.deno/env"
+source /home/cwiggins/.local/share/bash-completion/completions/deno.bash
