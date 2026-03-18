@@ -105,6 +105,9 @@ nnoremap confe :e $HOME/.vimrc<CR>
 nnoremap confr :source $HOME/.vimrc<CR>
 nnoremap coming i_In development..._<Esc>
 
+let mapleader=" "
+
+
 set ruf=%30(%=#LineNr#%.50F\ [%{strlen(&ft)?&ft:'none'}]\ %l:%c\ %p%%%)
 
 """"""""""""""""""""
@@ -116,6 +119,19 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
   call plug#begin('~/.local/share/vim/plugins')
   Plug 'conradirwin/vim-bracketed-paste'
   Plug 'jiangmiao/auto-pairs'
+  Plug 'rwxrob/vim-pandoc-syntax-simple'
+  Plug 'dense-analysis/ale'
+  Plug 'fatih/vim-go'
+  if has('nvim-0.8')
+    Plug 'nvim-treesitter/nvim-treesitter', {'do', ':TSUpdate'}
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  endif
+  if has('nvim')
+    Plug 'xolox/nvim-misc'
+    Plug 'xolox/vim-lua/ftplugin'
+  else
+    "Plug 'dahu/vim-asciidoc'
+  endif
   call plug#end()
 
   set updatetime=100
@@ -128,23 +144,22 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
     endif
     endf
 
-  if has("syntax")
-    syntax on
-    set background=dark
-	colorscheme retrobox
-    hi Normal ctermbg=NONE guibg=NONE
-    hi clear SignColumn
-    hi Comment ctermbg=NONE guibg=NONE
-    hi LineNr cterm=NONE ctermbg=NONE ctermfg=6 gui=NONE guibg=NONE guifg=#606360
-  endif
-else
-  if has("syntax")
-    syntax on
-    set background=dark
-	colorscheme retrobox
-    hi Normal ctermbg=NONE guibg=NONE
-    hi clear SignColumn
-    hi Comment ctermbg=NONE guibg=NONE
-    hi LineNr cterm=NONE ctermbg=NONE ctermfg=6 gui=NONE guibg=NONE guifg=#606360
-  endif
+  set signcolumn=yes
+  let g:ale_set_signs = 1
+  let g:ale_sign_info = '✨'
+  let g:ale_sign_error = '🔥'
+  let g:ale_sign_warning = '❗️'
+  let g:ale_sign_hint = '💡'
+
+endif
+
+if has("syntax")
+  syntax on
+  set background=dark
+  colorscheme retrobox
+  hi Normal ctermbg=NONE guibg=NONE
+  hi clear SignColumn
+  hi Comment ctermbg=NONE guibg=NONE
+  hi LineNr cterm=NONE ctermbg=NONE ctermfg=6 gui=NONE guibg=NONE guifg=#606360
+  hi StatusLine ctermbg=NONE
 endif
