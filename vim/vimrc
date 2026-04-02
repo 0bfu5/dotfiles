@@ -145,11 +145,15 @@ if filereadable(expand("~/.vim/autoload/plug.vim"))
                 Plug 'dense-analysis/ale'
                 Plug 'fatih/vim-go'
 
+                " coc requires nvim 0.8
+                if has('nvim-0.8')
+                        Plug 'neoclide/coc.nvim', {'branch': 'release'}
+                endif
+
                 " treesitter rewrite requires nvim 0.11
                 if has('nvim-0.11')
                         Plug 'nvim-treesitter/nvim-treesitter'
                         Plug 'rwxrob/nvim-treesitter-textobjects', {'do': ':TSUpdate'}
-                        Plug 'neoclide/coc.nvim', {'branch': 'release'}
                 endif
 
                 if has('nvim')
